@@ -54,10 +54,11 @@ public class DecimalBinaryConversion {
         }
         return decimalValue;
     }
-    public void printValue(){
+    public String printValue(){
+        String binaryValue="";
         for(int i = noOfBits-1; i >= 0; i--){
-        System.out.print(binary[i]);
+        binaryValue=binaryValue+String.valueOf(binary[i]);
         }
-        System.out.println();
+        return binaryValue;
     }
 }
