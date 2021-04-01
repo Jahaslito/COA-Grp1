@@ -39,7 +39,6 @@ public class DecimalBinaryConversion {
     }
 
     public int convertToDecimal(){
-
         decimalValue = 0;
         int power = 0;
         while(true){

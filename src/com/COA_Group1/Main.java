@@ -35,19 +35,21 @@ public class Main {
                     "\n3 => Convert from decimal to hexadecimal" +
                     "\n4 => Convert from hexadecimal to decimal" +
                     "\n5 => Display table"+
-                    "\n6 => Exit program");
+                    "\n6 => Error page"+
+                    "\n7 => Exit program");
             Scanner input = new Scanner(System.in); //System.in is a standard input stream.
             choice = input.nextInt();
             int value;
             DecimalBinaryConversion eg = new DecimalBinaryConversion();
             DecimalHexadecimalConversion convert = new DecimalHexadecimalConversion();
+            FloatingPoints floatingPoints = new FloatingPoints();
             switch (choice) {
                 case 1:
                     System.out.println("Enter the number decimal number to be converted \n");
                     value = input.nextInt();
                     eg.setDecimalValue(value);
                     eg.convertToBinary();
-                    eg.printValue();
+                    System.out.println(eg.printValue());
                     System.out.println("\n\n\n");
                     break;
                 case 2:
@@ -78,6 +80,11 @@ public class Main {
                     int end = input.nextInt();
                     displayTable(start,end);
 
+                    break;
+                case 6 :
+                    System.out.println("This is the binary value:");
+                    String value2 = floatingPoints.convert(1.025);
+                    System.out.println("This is the error => "+value2);
                     break;
                 default:
                     System.out.println("Do you understand English !!");
