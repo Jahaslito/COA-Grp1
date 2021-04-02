@@ -5,14 +5,23 @@ import java.util.Random;
 public class FloatingPoints {
     private static final int numbers = 30;
     double result;
-    public String remark = "Approximate";
+    private String remark = "Approximate";
+
+    public String getRemark() {
+        return remark;
+    }
+
+//    public void setRemark(String remark) {
+//        this.remark = remark;
+//    }
 
     public double randomNumber(){
         Random rand = new Random();
-        result = (rand.nextInt(29) - 10) / 100.0;
+        result = rand.nextInt(100000) / 1000.0;
         return result;
     }
     public String convert(double result){
+        remark = "Approximate";
         DecimalBinaryConversion decimalConversion = new DecimalBinaryConversion();
         int[] separatedValues = separateValue(result);
         decimalConversion.setDecimalValue(separatedValues[0]);
@@ -21,17 +30,17 @@ public class FloatingPoints {
         double decimalPointValue = separatedValues[1] / Math.pow(10, separatedValues[2]);
         String binaryNumber = "";
 
-        for (int i = 0; i <= 5; i++){
+        for (int i = 0; i < 5; i++){
             double calculation = decimalPointValue * 2;
             int [] separatedValues2 = separateValue(calculation);
             decimalPointValue = separatedValues2[1] / Math.pow(10, separatedValues2[2]);
-            if (decimalPointValue == 0){
-                 remark= "Exact";
+            if (decimalPointValue == 0.0){
+                remark= "Exact";
+                binaryNumber = binaryNumber + separatedValues2[0];
                 break;
             }
             binaryNumber = binaryNumber + separatedValues2[0];
         }
-
         return binaryValue +"." +binaryNumber;
     }
 
@@ -46,4 +55,7 @@ public class FloatingPoints {
         return separatedValue;
     }
 
+    public void displayTable(){
+
+    }
 }

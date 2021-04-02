@@ -27,16 +27,17 @@ public class Main {
     public static void main(String[] args) {
         int choice = 0;
 
-        while (choice != 6) {
+        while (choice != 8) {
             System.out.println("Hey Geek!! Want to convert some numbers? " +
                     "Choose:" +
                     "\n1 => Convert from decimal to binary" +
                     "\n2 => Convert from binary to decimal" +
                     "\n3 => Convert from decimal to hexadecimal" +
                     "\n4 => Convert from hexadecimal to decimal" +
-                    "\n5 => Display table"+
-                    "\n6 => Error page"+
-                    "\n7 => Exit program");
+                    "\n5 => Display table for conversion"+
+                    "\n6 => Display table for floating points"+
+                    "\n7 => Enter the floating point number : "+
+                    "\n8 => Exit program");
             Scanner input = new Scanner(System.in); //System.in is a standard input stream.
             choice = input.nextInt();
             int value;
@@ -82,9 +83,28 @@ public class Main {
 
                     break;
                 case 6 :
-                    System.out.println("This is the binary value:");
-                    String value2 = floatingPoints.convert(1.025);
-                    System.out.println("This is the error => "+value2);
+                    System.out.println("SAMPLE CONVERSION INFORMATION");
+                    System.out.println("-----------------------------------------------------------------------------");
+                    System.out.println("| S/No.  |\t Decimal Number  |\t Binary Number \t\t\t| Remarks \t\t\t|" );
+                    System.out.println("-----------------------------------------------------------------------------");
+
+                    for (int j = 0; j <= 30; j++){
+                        double randomNo = floatingPoints.randomNumber();
+                        String result = floatingPoints.convert(randomNo);
+                        String remark = floatingPoints.getRemark();
+                        System.out.println("|\t"+j+"|\t\t"+randomNo+" \t\t\t|\t"+result+"\t\t\t|\t"+remark+"\t\t|");
+                    }
+
+                    System.out.println("-----------------------------------------------------------------");
+
+                    break;
+                case 7:
+                    double floatingNumber = 0;
+                    System.out.println("Enter the floating point number : ");
+                    floatingNumber = input.nextDouble();
+                    String result = floatingPoints.convert(floatingNumber);
+                    String remark = floatingPoints.getRemark();
+                    System.out.println("The number " +floatingNumber+" is "+result+"\n"+"Remark : "+remark+"\n");
                     break;
                 default:
                     System.out.println("Do you understand English !!");
